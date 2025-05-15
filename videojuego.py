@@ -26,7 +26,14 @@ class Guerrero:
             print(f" * El guerrero {self.color} se ha muerido")
         else:
             print(f" * Al guerrero {self.color} aun le quedan {self.vida} vidas")
+    def descansar(self):
+        if self.vida <= 0:
+            return f"El guerrero {self.color} esta descansando ETERNAMENTE"
+        if self.vida < 3:
+            self.vida = 3
+        return f"el guerrero {self.color} ha descansado"
 
+    
 
 class Juego:
     def __init__(self):
