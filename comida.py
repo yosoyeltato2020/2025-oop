@@ -9,12 +9,12 @@ class Platano:
         print("Te ha costado 1€")
 
     # La clase tienen un metodo: comer()
-    def comer(self):
+    def comer(self, tamanyo_bocado):
         if self.cantidad <= 0:
             print("no queda")
             return
 
-        self.cantidad -= 1
+        self.cantidad -= tamanyo_bocado
         print("Ñan ñam que rico el platano")
 
 
