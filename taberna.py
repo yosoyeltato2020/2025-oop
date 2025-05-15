@@ -1,29 +1,25 @@
 class Copa:
-    def __init__(self, capacidad, cantidad):        
-        self.capacidad = int(capacidad)             
-        self.cantidad = float(cantidad)                
+    def __init__(self, capacidad, cantidad):
+        self.capacidad = int(capacidad)
+        if cantidad > capacidad:
+            raise ValueError("La cantidad no puede ser mayor que la capacidad")
+        self.cantidad = float(cantidad)
 
     def llenar(self):
-        self.cantidad = 1.0
+        self.cantidad = float(self.capacidad)
 
     def vaciar(self, cantidad):
-        self.cantidad -= cantidad
-        print(f"En la copa queda {self.cantidad}")
+        if cantidad <= self.cantidad:
+            self.cantidad -= cantidad
+            print(f"En la copa queda {self.cantidad}")
+        else:
+            self.cantidad = 0
+            print("La copa está vacía")
 
 class Parroquiano:
     def __init__(self, copa, dinero):
         self.copa = copa
         self.dinero = dinero
-
-
-        self.pedir()  
-        self.beber()
-        self.beber()
-        self.beber()
-        self.beber()
-        self.beber()
-        self.beber()
-
 
     def pedir(self):
         if self.dinero >= 1:
@@ -40,6 +36,10 @@ class Parroquiano:
         else:
             print("La copa está vacía.")
 
+# Crear objetos y realizar acciones de forma controlada
+la_copa = Copa(capacidad=1000, cantidad=1.0)
+parroquiano = Parroquiano(copa=la_copa, dinero=5)
 
-la_copa = Copa(capacidad=1000, cantidad=1.0) 
-parroquiano = Parroquiano(copa=la_copa, dinero=5)  
+# Ahora puedes llamar a los métodos cuando lo desees
+parroquiano.pedir()
+parroquiano.beber()
