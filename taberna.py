@@ -34,7 +34,7 @@ class Parroquiano:
 
     def beber(self):
         if self.copa.cantidad > 0:
-            self.copa.vaciar(200)
+            self.copa.vaciar(0.25)
             print("El parroquiano bebe una parte de la copa.")
             print(f"Cantidad restante en la copa: {self.copa.cantidad}")
         else:
@@ -45,8 +45,8 @@ la_copa = Copa(capacidad=1000, cantidad=1.0)
 dinero_aleatorio = random.randint(0, 10)  # Dinero aleatorio entre 0 y 10
 parroquiano = Parroquiano(copa=la_copa, dinero=dinero_aleatorio)
 
-for i in range(5):
-    print("trago numero  ", i+1)
+for i in range(10):
+    print("\nIntento", i+1)
     print(f"El parroquiano tiene {parroquiano.dinero} monedas.")
     if parroquiano.copa.cantidad == 0:
         parroquiano.pedir()
