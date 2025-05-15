@@ -15,6 +15,7 @@ class Guerrero:
         self.color = color
         self.id = id
         self.vida = vida
+        self.vida_max = 3
 
     def presentar(self):
         return f"Soy el ranger {self.color}"
@@ -34,6 +35,7 @@ class Juego:
         self.crear()
         self.presentar()
         self.pelear()
+        self.descansar()
 
     def crear(self):
         colores = [
@@ -64,6 +66,15 @@ class Juego:
         for ranger in self.rangers:
             if ranger.vida <= 0:
                 print(f"El ranger {ranger.id} esta muerido")
+    
+    def descansar(self):
+        for ranger in self.rangers:
+            if ranger.vida > 0:
+                ranger.vida = ranger.vida_max
+                print(f"El ranger {ranger.id} ha descansado y ahora tiene {ranger.vida} vidas")
+            else:
+                print(f"El ranger {ranger.id} no puede descansar porque está muerto")
+
 
 
 Juego()
