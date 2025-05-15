@@ -1,8 +1,11 @@
+import random
+
 class Copa:
     def __init__(self, capacidad, cantidad):
         self.capacidad = int(capacidad)
         if cantidad > capacidad:
-            raise ValueError("La cantidad no puede ser mayor que la capacidad")
+            print("La cantidad no puede ser mayor que la capacidad. Se ajusta al máximo.")
+            cantidad = capacidad
         self.cantidad = float(cantidad)
 
     def llenar(self):
@@ -33,13 +36,16 @@ class Parroquiano:
         if self.copa.cantidad > 0:
             self.copa.vaciar(0.25)
             print("El parroquiano bebe una parte de la copa.")
+            print(f"Cantidad restante en la copa: {self.copa.cantidad}")
         else:
             print("La copa está vacía.")
-
 # Crear objetos y realizar acciones de forma controlada
 la_copa = Copa(capacidad=1000, cantidad=1.0)
-parroquiano = Parroquiano(copa=la_copa, dinero=5)
+dinero_aleatorio = random.randint(0, 10)  # Dinero aleatorio entre 0 y 10
+parroquiano = Parroquiano(copa=la_copa, dinero=dinero_aleatorio)
 
-# Ahora puedes llamar a los métodos cuando lo desees
-parroquiano.pedir()
-parroquiano.beber()
+for i in range(3):
+    print(" ")
+    print(f"El parroquiano tiene {parroquiano.dinero} monedas.")
+    parroquiano.pedir()
+    parroquiano.beber()
