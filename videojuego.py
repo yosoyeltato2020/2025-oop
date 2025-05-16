@@ -14,11 +14,16 @@ class Guerrero:
     def __init__(self, color, id, vida):
         self.color = color
         self.id = id
+<<<<<<< HEAD
         self.vida = vida
         self.vida_max = 3
+=======
+        self.vida_max = vida
+        self.vida = self.vida_max
+>>>>>>> 8a7707308671eebcb62b60c7700956bca52b6f46
 
     def presentar(self):
-        return f"Soy el ranger {self.color}"
+        return f"Soy el ranger {self.color} y tengo {self.vida} vidas"
 
     def herir(self, cantidad=1):
         self.vida -= cantidad
@@ -33,7 +38,19 @@ class Guerrero:
             self.vida = 3
         return f"el guerrero {self.color} ha descansado"
 
+<<<<<<< HEAD
     
+=======
+    def descansar(self):
+        if self.vida <= 0:
+            return f"El Guerrero {self.color} esta descansando ETERNAMENTE"
+
+        if self.vida < self.vida_max:
+            self.vida = self.vida_max
+
+        return f"El Guerrero {self.color} ha descansado"
+
+>>>>>>> 8a7707308671eebcb62b60c7700956bca52b6f46
 
 class Juego:
     def __init__(self):
@@ -43,6 +60,10 @@ class Juego:
         self.presentar()
         self.pelear()
         self.descansar()
+<<<<<<< HEAD
+=======
+        self.presentar()
+>>>>>>> 8a7707308671eebcb62b60c7700956bca52b6f46
 
     def crear(self):
         colores = [
@@ -54,7 +75,10 @@ class Juego:
         ]
 
         for i in range(5):
-            self.rangers.append(Guerrero(color=colores.pop(0), id=i, vida=3))
+            color = colores.pop(0)
+            vida = 3
+            self.rangers.append(Guerrero(color=color, id=i, vida=vida))
+            # self.rangers.append(Guerrero(color, i, vida))
 
         return self.rangers
 
@@ -82,6 +106,11 @@ class Juego:
             else:
                 print(f"El ranger {ranger.id} no puede descansar porque está muerto")
 
+
+    def descansar(self):
+        print("Los Rangers descansan:")
+        for ranger in self.rangers:
+            print(ranger.descansar())
 
 
 Juego()
