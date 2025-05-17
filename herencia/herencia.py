@@ -16,6 +16,11 @@ def caosZoologico():
     firulais.registrar()
     gizmo.registrar()
 
+    bucefalo = Caballo("bucefalo")
+    bucefalo.come()
+    bucefalo.registrar()
+    bucefalo.carga()
+
 
 if __name__ == "__main__":
     caosZoologico()

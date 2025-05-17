@@ -23,3 +23,8 @@ class Gremlin(Animal):
     def come(self):
         super().come()                  # Primero ejecuta el comportamiento del super
         print("Gremlin se TRANSFORMA")  # Luego expande la funcionalidad
+
+class Caballo(Animal):
+    def carga(self, kilos):
+        print(f"El Caballo {self.nombre} está cargando peso")
+        
