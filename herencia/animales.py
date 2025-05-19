@@ -25,7 +25,12 @@ class Gremlin(Animal):
         print("Gremlin se TRANSFORMA")  # Luego expande la funcionalidad
 
 class Caballo(Animal):
+    def __init__(self, nombre, carga_maxima=100):
+        super().__init__(nombre)
+        self.carga_maxima = carga_maxima
+
     def carga(self, kilos):
-        print(f"El Caballo {self.nombre} está cargando peso de {kilos} kilos")
-        if kilos > 50:
-            print("¡Carga excesiva!")   
+        if kilos > self.carga_maxima:
+            print(f"¡Carga excedida! {self.nombre} solo puede cargar hasta {self.carga_maxima} kilos")
+        else:
+            print(f"El Caballo {self.nombre} está cargando {kilos} kilos")
