@@ -4,7 +4,6 @@ import random
 import string
 
 
-# class syntax
 class Tamanyo(Enum):
     MOTO = 0
     TURISMO = 1
@@ -22,10 +21,15 @@ class Tamanyo(Enum):
 
 
 class Vehiculo:
+
     def __init__(self):
         self.tamanyo = random.choice(list(Tamanyo))
         self.matricula = self.generar_matricula()
         self.entrada = datetime.now()
+
+    def __str__(self):
+        entrada = '{:%Y/%m/%d %H:%M:%S}'.format(self.entrada)
+        return f"{self.tamanyo} -- {self.matricula} -- {entrada}"
 
     def generar_matricula(self):
         # Generar 4 dígitos
@@ -36,18 +40,56 @@ class Vehiculo:
 
         return f"{numeros} {letras}"
 
+
+class Combustion(Vehiculo):
     def __str__(self):
-        entrada = '{:%Y/%m/%d %H:%M:%S}'.format(self.entrada)
-        return f"{self.tamanyo} -- {self.matricula} -- {entrada}"
+        return f"C<{super().__str__()}>"
 
 
-for i in range(10):
-    print(Vehiculo())
+class Electrico(Vehiculo):
+    def __str__(self):
+        return f"E<{super().__str__()}>"
 
 
-"""
 class Plaza:
-    numero
-    tamaño ["moto", "turismo", "furgo"]
-    vehiculo Vehiculo
-"""
+    def __init__(self, numero):
+        self.numero = numero
+        self.tamanyo = random.choice(list(Tamanyo))
+        self.vehiculo = None
+
+    def ocupar(self, vehiculo):
+        if vehiculo.tamanyo == self.tamanyo:
+            self.vehiculo = vehiculo
+            return f"{self.numero} ocupado por {self.vehiculo}"
+
+    def liberar(self):
+        vehiculo = self.vehiculo
+        self.vehiculo = None
+
+        return f"{self.numero} liberado de {vehiculo}"
+
+
+def demo():
+
+    vehiculos = []
+    for _ in range(5):
+        vehiculos.append(Combustion())
+        vehiculos.append(Electrico())
+
+    plazas = []
+    for num in range(10):
+        plazas.append(Plaza(num))
+
+    for plaza in plazas:
+        for vehiculo in vehiculos:
+            if vehiculo.tamanyo == plaza.tamanyo:
+                print(plaza.ocupar(vehiculo))
+                break
+
+    for plaza in plazas:
+        if isinstance(plaza.vehiculo, Vehiculo):
+            print(plaza.liberar())
+
+
+if __name__ == "__main__":
+    demo()
