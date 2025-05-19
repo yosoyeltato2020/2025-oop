@@ -19,7 +19,7 @@ def caosZoologico():
     bucefalo = Caballo("bucefalo")
     bucefalo.come()
     bucefalo.registrar()
-    bucefalo.carga()
+    bucefalo.carga(50)
 
 
 if __name__ == "__main__":

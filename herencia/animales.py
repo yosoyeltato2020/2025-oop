@@ -26,5 +26,6 @@ class Gremlin(Animal):
 
 class Caballo(Animal):
     def carga(self, kilos):
-        print(f"El Caballo {self.nombre} está cargando peso")
-        
+        print(f"El Caballo {self.nombre} está cargando peso de {kilos} kilos")
+        if kilos > 50:
+            print("¡Carga excesiva!")   
