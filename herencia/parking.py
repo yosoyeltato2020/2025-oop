@@ -8,6 +8,7 @@ class Tamanyo(Enum):
     MOTO = 0
     TURISMO = 1
     FURGO = 2
+    VMR = 3
 
     def __str__(self):
         if self.value == 0:
@@ -16,6 +17,8 @@ class Tamanyo(Enum):
             return "Turi"
         elif self.value == 2:
             return "Furg"
+        elif self.value ==3:
+            return "VMR"
         else:
             return "UNDEFINED"
 
@@ -50,9 +53,12 @@ class Electrico(Vehiculo):
     def __str__(self):
         return f"E<{super().__str__()}>"
 
-
+class Hibrido(Vehiculo):
+    def __str__(self):
+        return f"H<{super().__str__()}>"
+    
 class Plaza:
-    def __init__(self, numero):
+    def __init__(self, numero, tamanyo=None):
         self.numero = numero
         self.tamanyo = random.choice(list(Tamanyo))
         self.vehiculo = None
@@ -75,10 +81,14 @@ def demo():
     for _ in range(5):
         vehiculos.append(Combustion())
         vehiculos.append(Electrico())
+        vehiculos.append(Hibrido())
 
     plazas = []
     for num in range(10):
-        plazas.append(Plaza(num))
+        if num < 2:
+           plazas.append(Plaza(num, Tamanyo.VMR))
+        else:
+            plazas.append(Plaza(num))
 
     for plaza in plazas:
         for vehiculo in vehiculos:
