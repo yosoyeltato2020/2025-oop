@@ -61,7 +61,7 @@ class Plaza:
     def __init__(self, numero, tamanyo=None):
         self.numero = numero
         self.tamanyo = random.choice(list(Tamanyo))
-        self.vehiculo = None
+        self.vehiculo = None 
 
     def ocupar(self, vehiculo):
         if vehiculo.tamanyo == self.tamanyo:
