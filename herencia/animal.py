@@ -10,4 +10,4 @@ class Animal:
         print(f"El Animal {self.nombre} ha comido {self.comidas} veces")
 
     def registrar(self):
-        print(f"Hemos registado a {self.nombre} en la BBDD del gobierno")
+        print(f"Hemos registado a {self.nombre} en la BBDD del gobierno con el ID {self.chip}")

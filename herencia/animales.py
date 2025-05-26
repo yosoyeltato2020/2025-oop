@@ -1,4 +1,24 @@
+# from random import randint
+from random import *
+import random
 from animal import Animal
+
+
+def randint(a, b):
+    return "PATATA"
+
+
+print(randint(100, 200))
+print(random.randint(100, 200))
+
+
+
+
+
+
+
+
+exit()
 
 
 class Perro(Animal):
@@ -8,6 +28,9 @@ class Perro(Animal):
 
     def pasea(self):
         print(f"El Perro {self.raza} llamado {self.nombre} se pasea")
+
+    def come(self):
+        super().come()
 
 
 # Larva sobrescribe el método
@@ -24,7 +47,7 @@ class Gremlin(Animal):
         super().come()                  # Primero ejecuta el comportamiento del super
         print("Gremlin se TRANSFORMA")  # Luego expande la funcionalidad
 
-<<<<<<< HEAD
+
 class Caballo(Animal):
     def __init__(self, nombre, carga_maxima=100):
         super().__init__(nombre)
@@ -35,7 +58,7 @@ class Caballo(Animal):
             print(f"¡Carga excedida! {self.nombre} solo puede cargar hasta {self.carga_maxima} kilos")
         else:
             print(f"El Caballo {self.nombre} está cargando {kilos} kilos")
-=======
+
 
 class Caballo(Animal):
     def __init__(self, nombre):
@@ -55,4 +78,11 @@ class Caballo(Animal):
 
     def descargar(self):
         return self.peso
->>>>>>> upstream/main
+
+
+
+if __name__ == "__main__":
+    perrito = Perro("Perry Poppins", "Pug")
+    for i in range(random.randint(1, 10)):
+        perrito.come()
+>>>>>>> 50d1faf0c50c94a7967bb55e07098e26fa97a316
