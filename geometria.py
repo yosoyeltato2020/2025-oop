@@ -21,9 +21,22 @@ class Cubo(Cuadrado):
     def area(self):
         return super().area() * 6
 
-    def volume(self):
+    def volumen(self):
         area_cara = super().area()
         return area_cara * self.lado
+
+
+class Cuakilatero(Cuadrado):
+    def area(self):
+        return 1
+
+    def volumen(self):
+        return super().volumen() ** 0.5
+
+
+class Cuakicubo(Cuakilatero):
+    def area(self):
+        return super().area() * 6
 
 
 r = Rectangulo(1, 1)

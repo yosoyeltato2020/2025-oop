@@ -1,4 +1,24 @@
+# from random import randint
+from random import *
+import random
 from animal import Animal
+
+
+def randint(a, b):
+    return "PATATA"
+
+
+print(randint(100, 200))
+print(random.randint(100, 200))
+
+
+
+
+
+
+
+
+exit()
 
 
 class Perro(Animal):
@@ -8,6 +28,9 @@ class Perro(Animal):
 
     def pasea(self):
         print(f"El Perro {self.raza} llamado {self.nombre} se pasea")
+
+    def come(self):
+        super().come()
 
 
 # Larva sobrescribe el método
@@ -43,3 +66,9 @@ class Caballo(Animal):
 
     def descargar(self):
         return self.peso
+
+
+if __name__ == "__main__":
+    perrito = Perro("Perry Poppins", "Pug")
+    for i in range(random.randint(1, 10)):
+        perrito.come()
